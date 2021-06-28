@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:payflow/modules/home/home_controller.dart';
-import 'package:payflow/shared/auth/auth_controller.dart';
-import 'package:payflow/shared/models/user_model.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
-import 'package:payflow/shared/themes/app_images.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -37,13 +34,18 @@ class _HomePageState extends State<HomePage> {
           color: AppColors.primary,
           child: Center(
             child: ListTile(
-              title: Text.rich(TextSpan(
-                text: "Olá, ",
-                style: TextStyles.titleRegular,
-                children: [
-                  TextSpan(text: "Gabi", style: TextStyles.titleBoldBackground)
-                ],
-              )),
+              title: Text.rich(
+                TextSpan(
+                  text: "Olá, ",
+                  style: TextStyles.titleRegular,
+                  children: [
+                    TextSpan(
+                      text: "Gabi",
+                      style: TextStyles.titleBoldBackground,
+                    )
+                  ],
+                ),
+              ),
               subtitle: Text("Mantenha as suas contas em dia",
                   style: TextStyles.captionShape),
               trailing: Container(
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage> {
             ),
             GestureDetector(
               onTap: () {
-                print("clicou em add boleto");
+                Navigator.pushReplacementNamed(context, "/barcode_scanner");
               },
               child: Container(
                 width: 56,
@@ -85,12 +87,9 @@ class _HomePageState extends State<HomePage> {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(5),
                 ),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.add_box_outlined,
-                    color: AppColors.background,
-                  ),
+                child: Icon(
+                  Icons.add_box_outlined,
+                  color: AppColors.background,
                 ),
               ),
             ),
